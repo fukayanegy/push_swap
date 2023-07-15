@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hoge.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: etakaham <kakigoori00007@gmail.com>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/15 05:26:42 by etakaham          #+#    #+#             */
+/*   Updated: 2023/07/15 05:26:42 by etakaham         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "test.h"
 
 t_stack *create_stack(size_t size)
@@ -21,7 +33,6 @@ void push(t_stack *stack, int value)
 {
 	if (stack->top == (int)stack->size - 1)
 	{
-		fprintf(stderr, "stack is full\n");
 		return;
 	}
 
@@ -81,7 +92,6 @@ void reverse_shift_elements(t_stack *stack)
 {
 	if (stack->top < 1)
 	{
-		fprintf(stderr, "スタックには2つ以上の要素が必要です\n");
 		return;
 	}
 
