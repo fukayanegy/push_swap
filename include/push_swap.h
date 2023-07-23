@@ -36,6 +36,8 @@ bool	is_sortedB(t_stack *stackB);
 void	sort_two(t_stack *stackA);
 void	sort_three(t_stack *stackA);
 void	sort_five(t_stack *stackA, t_stack *stackB);
+// maximum_swap_algo
+void	sort_maximum(t_stack *stackA, t_stack *stackB);
 // middle.c
 void	ft_sort(int *array, int top);
 int		ft_median(t_stack *stackA);

@@ -7,21 +7,13 @@ void	sort_maximum(t_stack *stackA, t_stack *stackB)
 	int	B_max;
 
 	if (stackA->top < 5)
-		return (sort_five)
+		return (sort_five(stackA, stackB));
 	median = ft_median(stackA);
-	i = 0;
-	while (i <= stackA->top)
+	i = stackA->top;
+	while (i >= 0)
 	{
 		pb(stackA, stackB);
-		if (stackA->array[stackA->top] < median)
-		{
-			// set under  
-		}
-		else
-		{
-			// todo  
-		}
-		i++;
+		i--;
 	}
 	while (stackB->top >= 0)
 	{

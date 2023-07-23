@@ -44,8 +44,7 @@ int main(int argc, char **argv)
 	else
 		printf("no\n");
 	printf("=====================\n");
-	sort_five(stackA, stackB);
-	printf("---------\n");
+	sort_maximum(stackA, stackB);
 	print_stack(stackA);
 	print_stack(stackB);
 	if (is_sortedB(stackA))
@@ -53,8 +52,6 @@ int main(int argc, char **argv)
 	else
 		printf("no\n");
 	printf("=====================\n");
-
-	shift_down(stackA);
 	stack_free(stackA, stackB);
 	return (0);
 }
