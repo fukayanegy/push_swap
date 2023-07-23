@@ -1,26 +1,28 @@
 #include "../include/push_swap.h"
 
 // shifting stackA`s top element to stackB`s top element
-void	move_to_stack(t_stack *stackA, t_stack *stackB)
+void	push_other(t_stack *stackA, t_stack *stackB)
 {
 	int	value;
 
-	if (stackA->top == -1)
-		return ;
 	value = stackA->array[stackA->top];
 	stackA->top--;
 	push(stackB, value);
 }
 
 // changeing stack first to stack last
-// 1 2 3 4 5 to 5 1 2 3 4
-void	shift_elements(t_stack *stack)
+// 1 to 2
+// 2 to 3
+// 3 to 1
+void	shift_up(t_stack *stack)
 {
 	int	first;
 	int	i;
 
+	// error
 	if (stack->top < 1)
 		return ;
+	// copy
 	first = stack->array[stack->top];
 	i = stack->top;
 	while (i > 0)
@@ -32,14 +34,18 @@ void	shift_elements(t_stack *stack)
 }
 
 // changeing stack last to stack first
-// 1 2 3 4 5 to 2 3 4 5 1
-void	reverse_shift_elements(t_stack *stack)
+// 1 to 3
+// 2 to 1
+// 3 to 2
+void	shift_down(t_stack *stack)
 {
 	int	last;
 	int	i;
 
+	// error
 	if (stack->top < 1)
 		return ;
+	// copy
 	last = stack->array[0];
 	i = 0;
 	while (i < stack->top)
@@ -48,4 +54,20 @@ void	reverse_shift_elements(t_stack *stack)
 		i++;
 	}
 	stack->array[stack->top] = last;
+}
+
+// 1 to 2
+// 2 to 1
+// 3 to 3
+// 4 to 4
+void	swap(t_stack *stack)
+{
+	int	tmp;
+
+	// error
+	if (stack->top < 1)
+		return ;
+	tmp = stack->array[stack->top];
+	stack->array[stack->top] = stack->array[stack->top - 1];
+	stack->array[stack->top - 1] = tmp;
 }

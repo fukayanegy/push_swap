@@ -5,8 +5,10 @@ CFLAGS	= -Wall -Wextra -Werror
 FSANI	= -fsanitize=address -g
 SRCS	= src/*.c src/command/*.c
 OBJS	= $(SRCS:.c=.o)
-MAIN	= tester/*.c
-LIBFT	= libft/ft_atoi.c libft/ft_isdigit.c
+PUSH_SWAP	= tester/push_swap.c
+TEST = tester/test.c
+TEST_TWO = tester/test2.c
+LIBFT	= libft/ft_atoi.c libft/ft_isdigit.c libft/ft_memcpy.c
 PRINTF	= ft_printf/*.c
 
 .c.o:
@@ -23,14 +25,11 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: fclean all
+t:
+	$(CC) $(CFLAGS) $(FSANI) -o test $(SRCS) $(TEST) $(LIBFT) $(PRINTF)
 
 test:
-	$(CC) $(CFLAGS) $(FSANI) -o push_swap $(SRCS) $(MAIN) $(LIBFT) $(PRINTF)
-
-allclean: fclean
-	rm a.out
-	rm -r a.out*
+	$(CC) $(CFLAGS) $(FSANI) -o test $(SRCS) $(TEST_TWO) $(LIBFT) $(PRINTF)
 
 norm:
 	@norminette -R CheckForbiddenSorceHeader $(SRCS)

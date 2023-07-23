@@ -4,6 +4,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <limits.h>
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
 #include<stdio.h>
@@ -16,10 +17,10 @@ typedef struct s_stack
 }			t_stack;
 
 // move_element.c
-void	move_to_stack(t_stack *stackA, t_stack *stackB);
-void	shift_elements(t_stack *stack);
-void	reverse_shift_elements(t_stack *stack);
-void 	swap(t_stack *stack);
+void	push_other(t_stack *stackA, t_stack *stackB);
+void	shift_up(t_stack *stack);
+void	shift_down(t_stack *stack);
+void	swap(t_stack *stack);
 // stack_maker.c
 t_stack	*create_stack(size_t size);
 void	push(t_stack *stack, int value);
@@ -32,8 +33,15 @@ bool	is_error(int argc, char **argv);
 // sort_algo
 bool	is_sortedA(t_stack *stackA);
 bool	is_sortedB(t_stack *stackB);
-void	sortA_two(t_stack *stackA);
-void	sortA_three(t_stack *stackA);
+void	sort_two(t_stack *stackA);
+void	sort_three(t_stack *stackA);
+void	sort_five(t_stack *stackA, t_stack *stackB);
+// middle.c
+void	ft_sort(int *array, int top);
+int		ft_median(t_stack *stackA);
+// max_min.c
+int	stack_max(t_stack *stack);
+int	stack_min(t_stack *stack);
 // commond
 void	sa(t_stack *stackA);
 void	sb(t_stack *stackB);
