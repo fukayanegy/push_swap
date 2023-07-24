@@ -8,7 +8,8 @@ OBJS	= $(SRCS:.c=.o)
 PUSH_SWAP	= tester/push_swap.c
 TEST = tester/test.c
 TEST_TWO = tester/test2.c
-LIBFT	= libft/ft_atoi.c libft/ft_isdigit.c libft/ft_memcpy.c
+TEST_THREE = tester/test3.c
+LIBFT	= libft/ft_atoi.c libft/ft_isdigit.c libft/ft_memcpy.c libft/ft_split.c libft/ft_strchr.c
 PRINTF	= ft_printf/*.c
 
 push_swap:
@@ -28,11 +29,14 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-t:
+test:
 	$(CC) $(CFLAGS) $(FSANI) -o test $(SRCS) $(TEST) $(LIBFT) $(PRINTF)
 
-test:
+test2:
 	$(CC) $(CFLAGS) $(FSANI) -o test $(SRCS) $(TEST_TWO) $(LIBFT) $(PRINTF)
+
+test3:
+	$(CC) $(CFLAGS)  -o test $(SRCS) $(TEST_THREE) $(LIBFT) $(PRINTF)
 
 norm:
 	@norminette -R CheckForbiddenSorceHeader $(SRCS)

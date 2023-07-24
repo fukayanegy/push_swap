@@ -29,7 +29,8 @@ void	stack_free(t_stack *stackA, t_stack *stackB);
 void 	print_stack(t_stack *stack);
 // checker.c
 bool	is_overlap(t_stack *stackA);
-bool	is_error(int argc, char **argv);
+bool	is_error(int argc, char **argv, char **argv_cpy);
+bool	is_error_double_quotation(int argc, char **argv, char **argv_cpy);
 // sort_algo
 bool	is_sortedA(t_stack *stackA);
 bool	is_sortedB(t_stack *stackB);

@@ -6,7 +6,7 @@
 /*   By: etakaham <kakigoori00007@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:38:46 by etakaham          #+#    #+#             */
-/*   Updated: 2023/06/23 20:24:02 by etakaham         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:43:46 by etakaham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int		ft_print_p(void *p, ssize_t *len);
 int		ft_print_di(int n, ssize_t *len);
 int		ft_print_u(unsigned int n, ssize_t *len);
 int		ft_print_x(unsigned int n, bool is_upper, ssize_t *len);
-size_t	ft_strlen(const char *s);
 void	ft_ltohex(size_t n, ssize_t *len, bool is_upper);
 
 #endif

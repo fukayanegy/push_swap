@@ -19,13 +19,15 @@ int main(int argc, char **argv)
 	int		value;
 	int		i;
 	size_t	size;
+	char	**argv_cpy;
 	t_stack	*stackA;
 	t_stack	*stackB;
 
-	if (is_error(argc, argv))
+	argv_cpy = NULL;
+	if (is_error(argc, argv, argv_cpy))
 		return (1);
 	size = argc - 1;
-	stackA = create_stack(size);
+	stackA = create_stack(200);
 	stackB = create_stack(size);
 	i = argc;
 	while (i > 1)
@@ -52,6 +54,7 @@ int main(int argc, char **argv)
 	else
 		printf("no\n");
 	printf("=====================\n");
+	free(argv_cpy);
 	stack_free(stackA, stackB);
 	return (0);
 }

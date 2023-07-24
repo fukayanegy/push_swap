@@ -6,13 +6,13 @@
 /*   By: etakaham <kakigoori00007@gmail.com>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 19:39:22 by etakaham          #+#    #+#             */
-/*   Updated: 2023/06/23 20:21:06 by etakaham         ###   ########.fr       */
+/*   Updated: 2023/07/24 18:43:36 by etakaham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(const char *s)
+static size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
