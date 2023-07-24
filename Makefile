@@ -11,6 +11,9 @@ TEST_TWO = tester/test2.c
 LIBFT	= libft/ft_atoi.c libft/ft_isdigit.c libft/ft_memcpy.c
 PRINTF	= ft_printf/*.c
 
+push_swap:
+	$(CC) $(CFLAGS) -o $(NAME) $(SRCS) $(PUSH_SWAP) $(LIBFT) $(PRINTF)
+
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
 

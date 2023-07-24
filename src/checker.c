@@ -25,7 +25,7 @@ bool	is_error(int argc, char **argv)
 	int	i;
 	int	j;
 
-	if (argc <= 2)
+	if (argc <= 1)
 		return (true);
 	i = 1;
 	while (i < argc)
