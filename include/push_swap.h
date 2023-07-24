@@ -24,6 +24,8 @@ void	swap(t_stack *stack);
 // stack_maker.c
 t_stack	*create_stack(size_t size);
 void	push(t_stack *stack, int value);
+// atoi.c
+bool	ft_atoi_push_swap(const char *str, int *n);
 // main.c
 void	stack_free(t_stack *stackA, t_stack *stackB);
 void 	print_stack(t_stack *stack);
@@ -31,6 +33,8 @@ void 	print_stack(t_stack *stack);
 bool	is_overlap(t_stack *stackA);
 bool	is_error(int argc, char **argv, char **argv_cpy);
 bool	is_error_double_quotation(int argc, char **argv, char **argv_cpy);
+// hoge.c
+bool	hoge(int argc, char **argv, t_stack *stackA);
 // sort_algo
 bool	is_sortedA(t_stack *stackA);
 bool	is_sortedB(t_stack *stackB);

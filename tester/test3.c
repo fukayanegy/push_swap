@@ -18,12 +18,14 @@ void print_stack(t_stack *stack)
 bool	hoge(int argc, char **argv, t_stack *stackA)
 {
 	int		i;
+	int		j;
+	int		k;
 	int		value;
 	char	**argv_cpy;
 
 	if (argc <= 1)
 		return (false);
-	if (argc == 2)
+	else if (argc == 2)
 	{
 		if (ft_strchr(argv[1], ' ') == NULL)
 			return (false);
@@ -33,26 +35,58 @@ bool	hoge(int argc, char **argv, t_stack *stackA)
 			i = 0;
 			while (argv_cpy[i] != NULL)
 				i++;
-			printf("========while copy=======\n");
+			k = 0;
+			while (k < i)
+			{
+				j = 0;
+				while (argv_cpy[k][j] != '\0')
+				{
+					if (!ft_isdigit(argv_cpy[k][j]))
+					{
+						return (false);
+					}
+					j++;
+				}
+				k++;
+			}
+			i = 0;
+			while (argv_cpy[i] != NULL)
+				i++;
 			while (i)
 			{
 				value = ft_atoi(argv_cpy[i - 1]);
-				printf("%d\n", value);
 				push(stackA, value);
 				i--;
 			}
-			printf("======================\n");
+			free(argv_cpy);
 			return (true);
 		}
 	}
-	i = argc;
-	while (i > 1)
+	else
 	{
-		value = ft_atoi(argv[i - 1]);
-		push(stackA, value);
-		i--;
+		i = 1;
+		while (i < argc)
+		{
+			j = 0;
+			while (argv[i][j] != '\0')
+			{
+				if (!ft_isdigit(argv[i][j]))
+				{
+					return (false);
+				}
+				j++;
+			}
+			i++;
+		}
+		i = argc;
+		while (i > 1)
+		{
+			value = ft_atoi(argv[i - 1]);
+			push(stackA, value);
+			i--;
+		}
+		return (true);
 	}
-	return (true);
 }
 
 int	main(int argc, char **argv)
@@ -62,7 +96,11 @@ int	main(int argc, char **argv)
 
 	stackA = create_stack(200);
 	stackB = create_stack(argc - 1);
-	hoge(argc, argv, stackA);
+	if (!hoge(argc, argv, stackA))
+	{
+		printf("error\n");
+		return (1);
+	}
 	print_stack(stackA);
-	return 0;
+	return (0);
 }

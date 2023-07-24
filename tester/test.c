@@ -16,25 +16,15 @@ void print_stack(t_stack *stack)
 
 int main(int argc, char **argv)
 {
-	int		value;
-	int		i;
-	size_t	size;
-	char	**argv_cpy;
 	t_stack	*stackA;
 	t_stack	*stackB;
 
-	argv_cpy = NULL;
-	if (is_error(argc, argv, argv_cpy))
-		return (1);
-	size = argc - 1;
 	stackA = create_stack(200);
-	stackB = create_stack(size);
-	i = argc;
-	while (i > 1)
+	stackB = create_stack(200);
+	if (!hoge(argc, argv, stackA))
 	{
-		value = ft_atoi(argv[i - 1]);
-		push(stackA, value);
-		i--;
+		printf("error\n");
+		return (1);
 	}
 	if (is_overlap(stackA))
 		return (1);
@@ -54,7 +44,6 @@ int main(int argc, char **argv)
 	else
 		printf("no\n");
 	printf("=====================\n");
-	free(argv_cpy);
 	stack_free(stackA, stackB);
 	return (0);
 }
