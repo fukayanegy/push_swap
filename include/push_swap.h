@@ -1,0 +1,66 @@
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdbool.h>
+# include <limits.h>
+# include "../libft/libft.h"
+# include "../ft_printf/ft_printf.h"
+#include<stdio.h>
+
+typedef struct s_stack
+{
+	int		top;
+	size_t	size;
+	int		*array;
+}			t_stack;
+
+// src
+bool	is_correct_2argu(char *argument, int *array_size);
+bool	is_correct_argu(int argc, char **argv, int *array_size);
+bool	ft_atoi_push_swap(const char *str, int *n);
+int		*coordinate_compression(int *array, int size);
+void	ft_sort(int *array, int size);
+t_stack	*create_stack(size_t size);
+void	push(t_stack *stack, int value);
+bool	create_double_stack(size_t size, t_stack **A, t_stack **B);
+bool	array_storage(int argc, char **argv, t_stack *A, int size);
+// move_element.c
+void	push_other(t_stack *stackA, t_stack *stackB);
+void	shift_up(t_stack *stack);
+void	shift_down(t_stack *stack);
+void	swap(t_stack *stack);
+// sort_algo
+bool	is_sortedA(t_stack *stackA);
+bool	is_sortedB(t_stack *stackB);
+void	sort_two(t_stack *stackA);
+void	sort_three(t_stack *stackA);
+void	sort_five(t_stack *stackA, t_stack *stackB);
+// maximum_swap_algo
+void	sort_maximum(t_stack *stackA, t_stack *stackB);
+// middle.c
+void	ft_sort(int *array, int top);
+int		ft_median(t_stack *stackA);
+// max_min.c
+int	stack_max(t_stack *stack);
+int	stack_min(t_stack *stack);
+// commond
+void	sa(t_stack *stackA);
+void	sb(t_stack *stackB);
+void	ss(t_stack *stackA, t_stack *stackB);
+
+void	pa(t_stack *stackA, t_stack *stackB);
+void	pb(t_stack *stackA, t_stack *stackB);
+
+void	ra(t_stack *stackA);
+void	rb(t_stack *stackB);
+void	rr(t_stack *stackA, t_stack *stackB);
+
+void	rra(t_stack *stackA);
+void	rrb(t_stack *stackB);
+void	rrr(t_stack *stackA, t_stack *stackB);
+
+bool	is_overlap(int *array, int size);
+
+#endif
