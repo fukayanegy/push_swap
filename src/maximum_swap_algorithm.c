@@ -2,26 +2,29 @@
 
 void	sort_maximum(t_stack *stackA, t_stack *stackB)
 {
-	int	median;
 	int	i;
-	int	B_max;
+	int	j;
 
-	if (stackA->top < 5)
-		return (sort_five(stackA, stackB));
-	median = ft_median(stackA);
-	i = stackA->top;
-	while (i >= 0)
+	// is_sorted
+	if (is_sortedB(stackA))
+		return ;
+	// if (stackA->top < 5)
+	// 	return (sort_five(stackA, stackB));
+	i = 0;
+	j = stack_max(stackA);
+	while (i <= j)
 	{
-		pb(stackA, stackB);
-		i--;
-	}
-	while (stackB->top >= 0)
-	{
-		B_max = stack_max(stackB);
-		while (stackB->array[stackB->top] != B_max)
+		while (i != stackA->array[stackA->top])
 		{
-			rb(stackB);
+			ra(stackA);
 		}
+		pb(stackA, stackB);
+		i++;
+	}
+	i = 0;
+	while (i <= j)
+	{
 		pa(stackA, stackB);
+		i++;
 	}
 }

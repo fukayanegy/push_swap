@@ -39,9 +39,12 @@ bool	array_storage(int argc, char **argv, t_stack *A, int size)
 		return (false);
 	}
 	coordinate_compression(tmp, size);
-	i = 0;
-	while (i < size)
-		push(A, tmp[i++]);
+	i = size;
+	while (i != 0)
+	{
+		push(A, tmp[i - 1]);
+		i--;
+	}
 	free(tmp);
 	return (true);
 }

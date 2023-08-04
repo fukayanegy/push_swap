@@ -20,7 +20,7 @@ test1:
 	$(CC) $(CFLAGS) $(FSANI) -o test_one $(SRCS) $(TEST_ONE) $(LIBFT) $(PRINTF)
 
 test2:
-	$(CC) $(CFLAGS) -o test_two $(SRCS) $(TEST_TWO) $(LIBFT) $(PRINTF) $(PRINTER)
+	$(CC) $(CFLAGS) $(SRCS) $(TEST_TWO) $(LIBFT) $(PRINTF) $(PRINTER)
 
 test3:
 	$(CC) $(CFLAGS) $(FSANI) -o test_three $(SRCS) $(TEST_THREE) $(LIBFT) $(PRINTF) $(PRINTER)

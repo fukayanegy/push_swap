@@ -29,6 +29,15 @@ int	main(int argc, char **argv)
 	*/
 	if (!array_storage(argc - 1, &argv[1], A, array_size))
 		return (1);
+	printf("=====before sort_list=====\n");
 	print_stack(A);
+	printf("==========================\n");
+	printf("============max===========\n");
+	printf("%d\n", stack_max(A));
+	printf("==========================\n");
+	sort_maximum(A, B);
+	printf("=======sorted_list========\n");
+	print_stack(A);
+	printf("==========================\n");
 	return (0);
 }

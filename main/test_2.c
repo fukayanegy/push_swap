@@ -28,13 +28,8 @@ int	main(int argc, char **argv)
 	 * つまりargcの値によって変更される
 	*/
 	if (!array_storage(argc - 1, &argv[1], A, array_size))
-	{
-		stack_free(A, B);
 		return (1);
-	}
-	printf("==========result===========\n");
-	print_stack(A);
-	printf("===========================\n");
+	sort_maximum(A, B);
 	stack_free(A, B);
 	return (0);
 }
