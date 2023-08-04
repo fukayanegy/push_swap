@@ -16,6 +16,8 @@ typedef struct s_stack
 	int		*array;
 }			t_stack;
 
+// tester
+void print_stack(t_stack *stack);
 // src
 bool	is_correct_2argu(char *argument, int *array_size);
 bool	is_correct_argu(int argc, char **argv, int *array_size);
@@ -62,5 +64,6 @@ void	rrb(t_stack *stackB);
 void	rrr(t_stack *stackA, t_stack *stackB);
 
 bool	is_overlap(int *array, int size);
+void	stack_free(t_stack *stackA, t_stack *stackB);
 
 #endif

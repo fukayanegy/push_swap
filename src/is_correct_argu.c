@@ -15,19 +15,30 @@ bool	is_correct_2argu(char *argument, int *array_size)
 	{
 		checker_array = ft_split(argument, ' ');
 		if (checker_array[0] == NULL)
+		{
+			i = 0;
+			while (checker_array[i] != NULL)
+				free(checker_array[i++]);
+			free(checker_array);
 			return (false);
+		}
 		i = 0;
 		while (checker_array[i] != NULL)
 		{
 			if (!ft_atoi_push_swap(checker_array[i], &tmp_number))
 			{
-				printf("%d\n", tmp_number);
+				i = 0;
+				while (checker_array[i] != NULL)
+					free(checker_array[i++]);
 				free(checker_array);
 				return (false);
 			}
 			i++;
 		}
 		*array_size = i;
+		i = 0;
+		while (checker_array[i] != NULL)
+			free(checker_array[i++]);
 		free(checker_array);
 		return (true);
 	}
