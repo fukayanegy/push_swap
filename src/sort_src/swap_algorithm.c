@@ -6,7 +6,7 @@
 /*   By: etakaham <etakaham@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 12:13:12 by etakaham          #+#    #+#             */
-/*   Updated: 2023/08/13 15:35:27 by etakaham         ###   ########.fr       */
+/*   Updated: 2023/08/13 17:11:10 by etakaham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	sort_three(t_stack *A)
 void	sort_three_b(t_stack *B)
 {
 	if (B->top < 2)
-		return (sort_two(B));
+		return (sort_two_b(B));
 	if (is_sorted_a(B))
 		return ;
 	else if (B->array[2] > B->array[0] && B->array[0] > B->array[1])
@@ -84,25 +84,14 @@ void	sort_five(t_stack *stackA, t_stack *stackB)
 
 	if (stackA->top < 3)
 		return (sort_three(stackA));
-	median = ft_median(stackA);
-	i = 0;
-	while (i < median - 1)
+	while (stackA->top > 2)
 	{
-		if (stackA->array[stackA->top] < median)
-		{
-			pb(stackA, stackB);
-			i++;
-		}
-		else
+		while (stackA->array[stackA->top] > 1)
 			ra(stackA);
+		pb(stackA, stackB);
 	}
 	sort_three(stackA);
 	sort_three_b(stackB);
 	while (stackB->top >= 0)
-	{
-		b_max = stack_max(stackB);
-		while (stackB->array[stackB->top] != b_max)
-			rb(stackB);
 		pa(stackA, stackB);
-	}
 }

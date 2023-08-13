@@ -6,7 +6,7 @@
 /*   By: etakaham <etakaham@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 12:00:30 by etakaham          #+#    #+#             */
-/*   Updated: 2023/08/05 17:08:08 by etakaham         ###   ########.fr       */
+/*   Updated: 2023/08/13 16:44:59 by etakaham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static bool	__quoted_array_checker(char **checker_array, int *array_size)
 	int	tmp_number;
 
 	if (checker_array == NULL)
-		return (false);
+		return (true);
 	if (checker_array[0] == NULL)
-		return (false);
+		return (true);
 	i = 0;
 	while (checker_array[i] != NULL)
 	{
@@ -63,7 +63,7 @@ bool	is_correct_argu(int argc, char **argv, int *array_size)
 	int	tmp_number;
 
 	if (argc < 1)
-		return (false);
+		return (true);
 	else if (argc == 1)
 	{
 		if (__is_correct_quoted_string(argv[0], array_size))
