@@ -9,8 +9,6 @@
 # include "../ft_printf/ft_printf.h"
 #include<stdio.h>
 
-# define STEP_SIZE 3
-
 typedef struct s_stack
 {
 	int		top;
@@ -18,6 +16,7 @@ typedef struct s_stack
 	int		*array;
 }			t_stack;
 
+bool	is_in_range(int n, int min, int max);
 void	ft_sort(int *array, int size);
 int	*copy_int_array(int *int_array, int size);
 void	free_strings(char **strings);
@@ -47,6 +46,7 @@ void	sort_three_b(t_stack *stackB);
 void	sort_five(t_stack *stackA, t_stack *stackB);
 // maximum_swap_algo
 void	sort_maximum(t_stack *stackA, t_stack *stackB);
+void	sort_maximum2(t_stack *stackA, t_stack *stackB);
 // middle.c
 void	ft_sort(int *array, int top);
 int		ft_median(t_stack *stackA);

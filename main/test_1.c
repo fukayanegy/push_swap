@@ -13,11 +13,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!array_storage(argc - 1, &argv[1], A, array_size))
 		return (1);
-	sort_three_b(A);
-	printf("------sortB----\n");
-	print_stack(A);
-	sort_three(A);
-	printf("------sortA----\n");
-	print_stack(A);
+	sort_maximum2(A, B);
+	stack_free(A, B);
 	return (0);
 }
