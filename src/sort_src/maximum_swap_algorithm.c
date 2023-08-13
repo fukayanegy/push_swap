@@ -6,7 +6,7 @@
 /*   By: etakaham <etakaham@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 12:01:36 by etakaham          #+#    #+#             */
-/*   Updated: 2023/08/13 15:33:12 by etakaham         ###   ########.fr       */
+/*   Updated: 2023/08/13 17:23:36 by etakaham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,16 @@ static void	move_b_to_a(t_stack *A, t_stack *B, int q, int size)
 {
 	int	i;
 	int	j;
-	int	k;
-	int	move_count;
 
 	i = 0;
 	while (i < size)
 	{
 		push_with_in_range(A, B, q * (size - i), q * (size - i - 1));
-		k = 0;
-		while (k < q)
+		j = 0;
+		while (j < q)
 		{
 			rrb(B);
-			k++;
+			j++;
 		}
 		push_with_in_range(A, B, q * (size - i - 1), q * (size - i - 2));
 		i++;
@@ -96,7 +94,7 @@ static void	move_b_to_a(t_stack *A, t_stack *B, int q, int size)
 	}
 }
 
-void	sort_maximum2(t_stack *stackA, t_stack *stackB)
+void	sort_maximum(t_stack *stackA, t_stack *stackB)
 {
 	int	chunk_quantity;
 	int	step_size;

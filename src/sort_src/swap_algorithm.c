@@ -6,7 +6,7 @@
 /*   By: etakaham <etakaham@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 12:13:12 by etakaham          #+#    #+#             */
-/*   Updated: 2023/08/13 17:11:10 by etakaham         ###   ########.fr       */
+/*   Updated: 2023/08/13 17:18:15 by etakaham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,6 @@ void	sort_three_b(t_stack *B)
 
 void	sort_five(t_stack *stackA, t_stack *stackB)
 {
-	int	median;
-	int	i;
-	int	b_max;
-
 	if (stackA->top < 3)
 		return (sort_three(stackA));
 	while (stackA->top > 2)
