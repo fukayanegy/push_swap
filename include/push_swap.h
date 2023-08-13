@@ -17,6 +17,8 @@ typedef struct s_stack
 }			t_stack;
 
 bool	is_in_range(int n, int min, int max);
+int		compute_sqrt(int n);
+void	compute_chunk(t_stack *stackA, int *step_size, int *chunk_quantity);
 void	ft_sort(int *array, int size);
 int	*copy_int_array(int *int_array, int size);
 void	free_strings(char **strings);
@@ -38,8 +40,8 @@ void	shift_up(t_stack *stack);
 void	shift_down(t_stack *stack);
 void	swap(t_stack *stack);
 // sort_algo
-bool	is_sortedA(t_stack *stackA);
-bool	is_sortedB(t_stack *stackB);
+bool	is_sorted_a(t_stack *stackA);
+bool	is_sorted_b(t_stack *stackB);
 void	sort_two(t_stack *stackA);
 void	sort_three(t_stack *stackA);
 void	sort_three_b(t_stack *stackB);

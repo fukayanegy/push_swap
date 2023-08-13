@@ -6,7 +6,7 @@
 /*   By: etakaham <etakaham@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 12:13:12 by etakaham          #+#    #+#             */
-/*   Updated: 2023/08/05 18:13:58 by etakaham         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:35:27 by etakaham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	sort_two(t_stack *stackA)
 {
-	if (is_sortedB(stackA) || stackA->top != 1)
+	if (is_sorted_b(stackA) || stackA->top != 1)
 		return ;
 	else
 		sa(stackA);
@@ -22,57 +22,57 @@ void	sort_two(t_stack *stackA)
 
 void	sort_two_b(t_stack *stackB)
 {
-	if (is_sortedA(stackB) || stackB->top != 1)
+	if (is_sorted_a(stackB) || stackB->top != 1)
 		return ;
 	else
 		sb(stackB);
 }
 
-void	sort_three(t_stack *stackA)
+void	sort_three(t_stack *A)
 {
-	if (stackA->top < 2)
-		return (sort_two(stackA));
-	if (is_sortedB(stackA))
+	if (A->top < 2)
+		return (sort_two(A));
+	if (is_sorted_b(A))
 		return ;
-	else if (stackA->array[2] < stackA->array[0] && stackA->array[0] < stackA->array[1])
+	else if (A->array[2] < A->array[0] && A->array[0] < A->array[1])
 	{
-		rra(stackA);
-		sa(stackA);
+		rra(A);
+		sa(A);
 	}
-	else if (stackA->array[1] < stackA->array[2] && stackA->array[2] < stackA->array[0])
-		sa(stackA);
-	else if (stackA->array[0] < stackA->array[2] && stackA->array[2] < stackA->array[1])
-		rra(stackA);
-	else if (stackA->array[1] < stackA->array[0] && stackA->array[0] < stackA->array[2])
-		ra(stackA);
-	else if (stackA->array[0] < stackA->array[1] && stackA->array[1] < stackA->array[2])
+	else if (A->array[1] < A->array[2] && A->array[2] < A->array[0])
+		sa(A);
+	else if (A->array[0] < A->array[2] && A->array[2] < A->array[1])
+		rra(A);
+	else if (A->array[1] < A->array[0] && A->array[0] < A->array[2])
+		ra(A);
+	else if (A->array[0] < A->array[1] && A->array[1] < A->array[2])
 	{
-		ra(stackA);
-		sa(stackA);
+		ra(A);
+		sa(A);
 	}
 }
 
-void	sort_three_b(t_stack *stackB)
+void	sort_three_b(t_stack *B)
 {
-	if (stackB->top < 2)
-		return (sort_two(stackB));
-	if (is_sortedA(stackB))
+	if (B->top < 2)
+		return (sort_two(B));
+	if (is_sorted_a(B))
 		return ;
-	else if (stackB->array[2] > stackB->array[0] && stackB->array[0] > stackB->array[1])
+	else if (B->array[2] > B->array[0] && B->array[0] > B->array[1])
 	{
-		rrb(stackB);
-		sb(stackB);
+		rrb(B);
+		sb(B);
 	}
-	else if (stackB->array[1] > stackB->array[2] && stackB->array[2] > stackB->array[0])
-		sb(stackB);
-	else if (stackB->array[0] > stackB->array[2] && stackB->array[2] > stackB->array[1])
-		rrb(stackB);
-	else if (stackB->array[1] > stackB->array[0] && stackB->array[0] > stackB->array[2])
-		rb(stackB);
-	else if (stackB->array[0] > stackB->array[1] && stackB->array[1] > stackB->array[2])
+	else if (B->array[1] > B->array[2] && B->array[2] > B->array[0])
+		sb(B);
+	else if (B->array[0] > B->array[2] && B->array[2] > B->array[1])
+		rrb(B);
+	else if (B->array[1] > B->array[0] && B->array[0] > B->array[2])
+		rb(B);
+	else if (B->array[0] > B->array[1] && B->array[1] > B->array[2])
 	{
-		rb(stackB);
-		sb(stackB);
+		rb(B);
+		sb(B);
 	}
 }
 
@@ -80,7 +80,7 @@ void	sort_five(t_stack *stackA, t_stack *stackB)
 {
 	int	median;
 	int	i;
-	int	B_max;
+	int	b_max;
 
 	if (stackA->top < 3)
 		return (sort_three(stackA));
@@ -100,11 +100,9 @@ void	sort_five(t_stack *stackA, t_stack *stackB)
 	sort_three_b(stackB);
 	while (stackB->top >= 0)
 	{
-		B_max = stack_max(stackB);
-		while (stackB->array[stackB->top] != B_max)
-		{
+		b_max = stack_max(stackB);
+		while (stackB->array[stackB->top] != b_max)
 			rb(stackB);
-		}
 		pa(stackA, stackB);
 	}
 }

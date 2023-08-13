@@ -6,161 +6,107 @@
 /*   By: etakaham <etakaham@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 12:01:36 by etakaham          #+#    #+#             */
-/*   Updated: 2023/08/05 18:41:43 by etakaham         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:33:12 by etakaham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-bool	is_in_range(int n, int min, int max)
+static bool	sort_maximum_checker(t_stack *stackA, t_stack *stackB)
 {
-	int	tmp;
-
-	if (min > max)
-	{
-		tmp = min;
-		min = max;
-		max = tmp;
-	}
-	if (min <= n && n < max)
-		return (true);
-	else
+	if (is_sorted_b(stackA))
 		return (false);
-}
-
-/**
- * Find the square root
- * @param n number
- * @return square result
-*/
-int	compute_sqrt(int n)
-{
-	int	result;
-
-	result = 0;
-	if (n < 1)
-		return (result);
-	while (result * result < n)
+	if (stackA->top <= 5)
 	{
-		result++;
+		sort_five(stackA, stackB);
+		return (false);
 	}
-	return (result - 1);
+	return (true);
 }
 
-/**
- * Calculate how many elements are to be divided
- * 1 2 3 4 / 5 6 7 8 / 9 10 11 12 / 13 14 15 16 / 17 18 19 20 / 21 22
- * @param stackA
- * @param step_size 6
- * @param chunk_quantity 4
-*/
-void	compute_chunk(t_stack *stackA, int *step_size, int *chunk_quantity)
+static void	move_a_to_b(t_stack *A, t_stack *B, int q, int size)
 {
-	int	top_sqrt;
+	int	i;
+	int	j;
 
-	top_sqrt = compute_sqrt(stackA->top);
-	*chunk_quantity = stackA->top / top_sqrt;
-	*step_size = stackA->top / *chunk_quantity;
-	if (stackA->top / *chunk_quantity != 0)
-		*step_size = *step_size + 1;
-	if (*step_size % 2 == 1)
+	i = 0;
+	while (i < size)
 	{
-		while (*step_size % 2 == 1)
+		j = 0;
+		while (j < q * 2)
 		{
-			*chunk_quantity = *chunk_quantity + 1;
-			*step_size = stackA->top / *chunk_quantity;
-			if (stackA->top / *chunk_quantity != 0)
-				*step_size = *step_size + 1;
+			if (A->top < 0)
+				break ;
+			while (!is_in_range(A->array[A->top], q * (i + 0), q * (i + 2)))
+				ra(A);
+			pb(A, B);
+			if (is_in_range(B->array[B->top], q * (i + 0), q * (i + 1)))
+				rb(B);
+			j++;
+		}
+		i += 2;
+	}
+}
+
+static void	push_with_in_range(t_stack *A, t_stack *B, int range1, int range2)
+{
+	int	j;
+	int	move_count;
+
+	j = 0;
+	while (is_in_range(B->array[B->top], range1, range2) && B->top > 0)
+	{
+		move_count = 0;
+		while (B->array[B->top] != stack_max(B) && B->top > 0)
+		{
+			rb(B);
+			move_count++;
+		}
+		pa(A, B);
+		while (move_count && B->top > 0)
+		{
+			rrb(B);
+			move_count--;
+			if (B->array[B->top] == stack_max(B))
+				pa(A, B);
 		}
 	}
 }
 
-void	sort_maximum2(t_stack *stackA, t_stack *stackB)
+static void	move_b_to_a(t_stack *A, t_stack *B, int q, int size)
 {
 	int	i;
 	int	j;
 	int	k;
 	int	move_count;
+
+	i = 0;
+	while (i < size)
+	{
+		push_with_in_range(A, B, q * (size - i), q * (size - i - 1));
+		k = 0;
+		while (k < q)
+		{
+			rrb(B);
+			k++;
+		}
+		push_with_in_range(A, B, q * (size - i - 1), q * (size - i - 2));
+		i++;
+		i++;
+	}
+}
+
+void	sort_maximum2(t_stack *stackA, t_stack *stackB)
+{
 	int	chunk_quantity;
 	int	step_size;
 
-	if (is_sortedB(stackA))
+	if (!sort_maximum_checker(stackA, stackB))
 		return ;
-	if (stackA->top <= 5)
-		return (sort_five(stackA, stackB));
 	chunk_quantity = 1;
 	step_size = 1;
 	compute_chunk(stackA, &step_size, &chunk_quantity);
-	i = 0;
-	while (i < step_size)
-	{
-		j = 0;
-		while (j < chunk_quantity * 2)
-		{
-			if (stackA->top < 0)
-				break ;
-			while (!is_in_range(stackA->array[stackA->top], chunk_quantity * i, chunk_quantity * (i + 2)))
-				ra(stackA);
-			if (is_in_range(stackA->array[stackA->top], chunk_quantity * i, chunk_quantity * (i + 1)))
-			{
-				pb(stackA, stackB);
-				rb(stackB);
-			}
-			else if (is_in_range(stackA->array[stackA->top], chunk_quantity * (i + 1), chunk_quantity * (i + 2)))
-			{
-				pb(stackA, stackB);
-			}
-			j++;
-		}
-		i++;
-		i++;
-	}
-	i = 0;
-	while (i < step_size)
-	{
-		j = 0;
-		while (is_in_range(stackB->array[stackB->top], chunk_quantity * (step_size - i), chunk_quantity * (step_size - i - 1)) && stackB->top > 0)
-		{
-			move_count = 0;
-			while (stackB->array[stackB->top] != stack_max(stackB) && stackB->top > 0)
-			{
-				rb(stackB);
-				move_count++;
-			}
-			pa(stackA, stackB);
-			while (move_count && stackB->top > 0)
-			{
-				rrb(stackB);
-				move_count--;
-				if (stackB->array[stackB->top] == stack_max(stackB))
-					pa(stackA, stackB);
-			}
-		}
-		k = 0;
-		while (k < chunk_quantity)
-		{
-			rrb(stackB);
-			k++;
-		}
-		while (is_in_range(stackB->array[stackB->top], chunk_quantity * (step_size - i - 1), chunk_quantity * (step_size - i - 2)) && stackB->top > 0)
-		{
-			move_count = 0;
-			while (stackB->array[stackB->top] != stack_max(stackB) && stackB->top > 0)
-			{
-				rb(stackB);
-				move_count++;
-			}
-			pa(stackA, stackB);
-			while (move_count && stackB->top > 0)
-			{
-				rrb(stackB);
-				move_count--;
-				if (stackB->array[stackB->top] == stack_max(stackB))
-					pa(stackA, stackB);
-			}
-		}
-		i++;
-		i++;
-	}
+	move_a_to_b(stackA, stackB, chunk_quantity, step_size);
+	move_b_to_a(stackA, stackB, chunk_quantity, step_size);
 	pa(stackA, stackB);
 }

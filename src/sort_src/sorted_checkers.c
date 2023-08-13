@@ -6,13 +6,13 @@
 /*   By: etakaham <etakaham@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 12:09:30 by etakaham          #+#    #+#             */
-/*   Updated: 2023/08/05 17:10:14 by etakaham         ###   ########.fr       */
+/*   Updated: 2023/08/13 15:31:20 by etakaham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/push_swap.h"
 
-bool	is_sortedA(t_stack *stackA)
+bool	is_sorted_a(t_stack *stackA)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ bool	is_sortedA(t_stack *stackA)
 	return (true);
 }
 
-bool	is_sortedB(t_stack *stackB)
+bool	is_sorted_b(t_stack *stackB)
 {
 	int	i;
 
