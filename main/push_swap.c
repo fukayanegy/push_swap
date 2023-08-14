@@ -6,7 +6,7 @@
 /*   By: etakaham <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/13 17:26:02 by etakaham          #+#    #+#             */
-/*   Updated: 2023/08/13 17:28:04 by etakaham         ###   ########.fr       */
+/*   Updated: 2023/08/14 16:46:27 by etakaham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	sort_maximum(a, b);
+	stack_free(a, b);
 	return (0);
 }
