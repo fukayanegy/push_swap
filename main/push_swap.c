@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 	if (!array_storage(argc - 1, &argv[1], a, array_size))
 	{
 		ft_printf("Error\n");
+		stack_free(a, b);
 		return (0);
 	}
 	sort_maximum(a, b);
